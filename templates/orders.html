@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}{% load i18n %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Special Orders</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Needs Picked Up:</h4>
+    </div>
+  </div>
+        {% for order in specialorders %}
+              {% if order.received_date != NULL  %}
+                  {% if order.fulfilled_date == NULL %}
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="list-group">
+            <a href="{% url 'AlamoParkway:SpecialOrderUpdate' order.id %}" class="list-group-item"
+               style="background-color: lightgreen">
+              <h4 class="list-group-item-heading">{{ order.item }}</h4>
+              <p class="list-group-item-text">Publisher: {{ order.ordered_by }}</p>
+              <p class="list-group-item-text">Quantity: {{ order.quantity }}</p>
+              <p class="list-group-item-text">Date Ordered: {{ order.order_date }}</p>
+            </a>
+     </div>
+    </div>
+  </div>
+                      {% endif %}
+              {% endif %}
+          {% endfor %}
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Pending:</h4>
+    </div>
+  </div>
+
+           {% for order in specialorders %}
+              {% if order.received_date == None %}
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="list-group">
+            <a href="{% url 'AlamoParkway:SpecialOrderUpdate' order.id %}" class="list-group-item"
+                    style="background-color: lightblue">
+              <h4 class="list-group-item-heading">{{ order.item }}</h4>
+              <p class="list-group-item-text">Publisher: {{ order.ordered_by }}</p>
+              <p class="list-group-item-text">Quantity: {{ order.quantity }}</p>
+              <p class="list-group-item-text">Date Ordered: {{ order.order_date }}</p>
+            </a>
+     </div>
+    </div>
+  </div>
+              {% endif %}
+          {% endfor %}
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Bulk Orders</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Needs Picked Up:</h4>
+    </div>
+  </div>
+           {% for order in bulkorders %}
+              {% if order.received_date != NULL  %}
+                  {% if order.fulfilled_date == NULL %}
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="list-group">
+            <a href="{% url 'AlamoParkway:BulkOrderUpdate' order.id %}" class="list-group-item"
+               style="background-color: lightgreen">
+              <h4 class="list-group-item-heading">{{ order.item }}</h4>
+              <p class="list-group-item-text">Publisher: {{ order.ordered_by }}</p>
+              <p class="list-group-item-text">Quantity: {{ order.quantity }}</p>
+              <p class="list-group-item-text">Date Ordered: {{ order.order_date }}</p>
+            </a>
+     </div>
+    </div>
+  </div>
+                      {% endif %}
+              {% endif %}
+          {% endfor %}
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Pending:</h4>
+    </div>
+  </div>
+
+           {% for order in bulkorders %}
+              {% if order.received_date == None %}
+  <div class="row">{{  order.received_Date }}
+    <div class="col-lg-12">
+      <div class="list-group">
+            <a href="{% url 'AlamoParkway:BulkOrderUpdate' order.id %}" class="list-group-item"
+                    style="background-color: lightblue">
+              <h4 class="list-group-item-heading">{{ order.item }}</h4>
+              <p class="list-group-item-text">Publisher: {{ order.ordered_by }}</p>
+              <p class="list-group-item-text">Quantity: {{ order.quantity }}</p>
+              <p class="list-group-item-text">Date Ordered: {{ order.order_date }}</p>
+              <p class="list-group-item-text">Date Ordered: {{ order.received_date }}</p>
+
+            </a>
+     </div>
+    </div>
+  </div>
+              {% endif %}
+          {% endfor %}
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% load staticfiles i18n %}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}MyLiteratureOrder.com{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js">
+    </script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.js">
+    </script>
+    {{ form.media }}
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {% block css %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+    <!-- Your stuff: Third-party css libraries go here -->
+
+    <!-- This file store project specific CSS -->
+    {% endblock %}
+
+  </head>
+
+  <body>
+
+    <div class="header navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/">Alamo Parkway</a>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="{% url 'AlamoParkway:Orders' %}">Orders</a></li>
+          <li><a href="{% url 'AlamoParkway:SpecialOrderCreate' %}">New Special Order</a></li>
+          <li><a href="{% url 'AlamoParkway:BulkOrderCreate' %}">New Bulk Order</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+          {% endfor %}
+      {% endif %}
+
+      {% block content %}
+        <h4><span><i>"that the man of God may be fully competent, completely equipped for every good work.”
+            <br>-(2 Tim. 3:16, 17)</i></span></h4>
+      {% endblock content %}
+
+    </div> <!-- /container -->
+
+    {% block modal %}{% endblock modal %}
+
+

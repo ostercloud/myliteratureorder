@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}{% load i18n %}
+{% load avatar_tags %}
+
+{% block title %}Special Orders{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Orders</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="list-group">
+          {% for order in specialorder_list %}
+            <a href="{% url 'AlamoParkway:SpecialOrderUpdate' order.id %}" class="list-group-item">
+              <h4 class="list-group-item-heading">{{ order.item }}</h4>
+              <p class="list-group-item-text">Publisher: {{ order.ordered_by }}</p>
+              <p class="list-group-item-text">Quantity: {{ order.quantity }}</p>
+              <p class="list-group-item-text">Date Ordered: {{ order.order_date }}</p>
+            </a>
+          {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock content %}

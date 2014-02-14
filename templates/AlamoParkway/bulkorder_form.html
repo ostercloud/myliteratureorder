@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+    {{ form.media }}
+{% load crispy_forms_tags %}
+{% block title %}Order: {{ bulkorder.ordered_by }} {{ bulkorder.item }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>{% block header %}Order: {{ bulkorder.ordered_by }} {{ bulkorder.item }}{% endblock %}</h1>
+            <form class="form-horizontal" method="post"
+                  action="{% url 'AlamoParkway:BulkOrderUpdate' bulkorder.id %}">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="control-group">
+                  <div class="controls">
+                    <br><button type="submit" class="btn">Update</button>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

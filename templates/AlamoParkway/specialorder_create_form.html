@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Add New Order{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>{% block header %}Order Details:{% endblock %}</h1>
+            <form class="form-horizontal" method="post" action="#">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="control-group">
+                  <div class="controls">
+                     <br><button type="submit" class="btn" Value="Create">Place Order</button>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
