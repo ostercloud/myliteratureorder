@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'crispy_forms',
     'bootstrap3_datetime',
+    'report_builder',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,6 +55,12 @@ ROOT_URLCONF = 'django_base.urls'
 
 WSGI_APPLICATION = 'django_base.wsgi.application'
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    '/home/docker/code/app/static/',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

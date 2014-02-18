@@ -21,5 +21,6 @@ urlpatterns = patterns('',
         name="home"),
     #add the path to your new apps urls.py belo here, examples above.
     url(r'alamo-parkway/', include("AlamoParkway.urls", namespace="AlamoParkway")),
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="my_login")
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="my_login"),
+    url(r'^report_builder/', include('report_builder.urls')),
 )

@@ -29,4 +29,9 @@ urlpatterns = patterns('',
         view=views.BulkOrderCreateView.as_view(),
         name='BulkOrderCreate'
     ),
+    url(
+        regex=r'^reports/$',
+        view=views.reports.as_view(),
+        name='reports'
+    ),
     )

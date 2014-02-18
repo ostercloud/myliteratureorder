@@ -78,3 +78,15 @@ class BulkOrderCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return self.request.META.get('HTTP_REFERER')
+
+class reports(LoginRequiredMixin, ListView,):
+    context_object_name = 'specialorders'
+    template_name = 'AlamoParkway/reports.html'
+    queryset = SpecialOrder.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(reports, self).get_context_data(**kwargs)
+        context['specialorders'] = SpecialOrder.objects.all()
+        context['bulkorders'] = BulkOrder.objects.all()
+        # And so on for more models
+        return context
